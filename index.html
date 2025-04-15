@@ -8,7 +8,8 @@
     body {
       margin: 0;
       padding: 0;
-      background: url('background.jpg') no-repeat center center/cover;
+      /* Removed background image */
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
       font-family: 'Georgia', serif;
       color: #2e2e2e;
       display: flex;
@@ -19,11 +20,26 @@
       overflow: hidden;
       text-align: center;
       position: relative;
+      animation: backgroundShift 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes backgroundShift {
+      0% {
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      }
+      50% {
+        background: linear-gradient(135deg, #fbc7c7 0%, #a1c4fd 100%);
+      }
+      100% {
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      }
     }
 
     h1 {
       font-size: 3rem;
       margin-bottom: 0.5rem;
+      z-index: 10;
+      position: relative;
     }
 
     p {
@@ -31,6 +47,8 @@
       max-width: 700px;
       margin: 0 auto;
       padding: 0 20px;
+      z-index: 10;
+      position: relative;
     }
 
     /* Flower animation */
@@ -38,10 +56,24 @@
       position: absolute;
       width: 60px;
       height: 60px;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: float 6s ease-in-out infinite, spin 6s linear infinite;
+      transform-origin: center center;
+      animation: bloom 3s ease forwards, float 6s ease-in-out infinite, spin 6s linear infinite;
+      opacity: 0;
+    }
+
+    /* Blooming animation */
+    @keyframes bloom {
+      0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+      }
     }
 
     .flower::before,
@@ -53,6 +85,7 @@
       border-radius: 50%;
       background-color: #ff69b4;
       animation: spin 6s linear infinite;
+      transform-origin: center center;
     }
 
     .flower::before {
@@ -88,6 +121,8 @@
       cursor: pointer;
       font-size: 1rem;
       transition: background 0.3s;
+      z-index: 10;
+      position: relative;
     }
 
     button:hover {
@@ -103,8 +138,12 @@
   <h1>Congratulations, Dae Anne Duque! 🎓</h1>
   <p>Your journey of hard work, courage, and dedication has blossomed into this beautiful moment. The world awaits your brilliance.</p>
 
-  <!-- Animated flower -->
-  <div class="flower"></div>
+  <!-- Multiple animated flowers -->
+  <div class="flower" style="top: 15%; left: 30%; animation-delay: 0s;"></div>
+  <div class="flower" style="top: 25%; left: 60%; animation-delay: 0.5s;"></div>
+  <div class="flower" style="top: 40%; left: 45%; animation-delay: 1s;"></div>
+  <div class="flower" style="top: 55%; left: 70%; animation-delay: 1.5s;"></div>
+  <div class="flower" style="top: 70%; left: 35%; animation-delay: 2s;"></div>
 
   <button onclick="replayMusic()">🔁 Replay Music</button>
 
