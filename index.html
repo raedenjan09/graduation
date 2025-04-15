@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Congratulations Dae Anne Duque</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('background.jpg') no-repeat center center/cover;
+      font-family: 'Georgia', serif;
+      color: #2e2e2e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .floating {
+      position: absolute;
+      width: 80px;
+      animation: float 6s ease-in-out infinite;
+      opacity: 0.9;
+    }
+
+    .flower {
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #6d4c41;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #8d6e63;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Congratulations, Dae Anne Duque! 🎓</h1>
+  <p>Your journey of hard work, courage, and dedication has blossomed into this beautiful moment. The world awaits your brilliance.</p>
+
+  <img src="flower.png" class="floating flower" alt="Flower" />
+
+  <button onclick="replayMusic()">🔁 Replay Music</button>
+
+  <audio id="gradMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const music = document.getElementById("gradMusic");
+
+    // Allow music to play on click if browser blocks autoplay
+    window.addEventListener("click", () => {
+      music.play();
+    });
+
+    function replayMusic() {
+      music.currentTime = 0;
+      music.play();
+    }
+  </script>
+</body>
+</html>
